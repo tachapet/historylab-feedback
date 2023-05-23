@@ -1,0 +1,18 @@
+$color-primary: #5352a6;
+$color-secondary: #fce4e3;
+
+$color-green: #51b15b;
+$color-red: red;
+$color-orange: orange;
+
+$color-text: desaturate(darken($color-secondary, 85), 62);
+
+$color-bg-0: $color-secondary;
+$color-bg-1: lighten(desaturate($color-bg-0, 5), 3);
+$color-bg--1: darken(desaturate($color-bg-0, 30), 10);
+$color-bg--2: darken(desaturate($color-bg-0, 46), 24);
+$color-bg--3: darken(desaturate($color-bg-0, 62), 38);
+$color-bg--4: lighten($color-text, 20);
+
+
+

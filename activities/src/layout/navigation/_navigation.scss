@@ -1,0 +1,118 @@
+@import '../../scss/variables/variables';
+@import '../../scss/variables/colors';
+@import '../../scss/tools/vendor/media-queries';
+
+// Horizontální navigace
+.navigation {
+  text-align: center;
+  line-height: $navigation-height;
+  height: $navigation-height + $base-unit * 0.5;
+  background-color: $bg-color;
+
+  + .row {
+    background-color: $bg-color;
+  }
+}
+
+.nav-button {
+  position: absolute;
+  top: $navigation-height;
+  border-bottom: 0;
+  padding: 0 $base-unit;
+  cursor: pointer;
+  color: $bg-color-2;
+  font-size: .64rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  transition: none;
+
+  &:hover {
+    color: $text-color;
+
+    .icon-svg {
+      background-color: $text-color;
+      color: $bg-color;
+    }
+  }
+
+  &.is-hidden {
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  span {
+    margin-top: .1em;
+    display: inline-block;
+  }
+
+  .icon-svg {
+    border-radius: 50%;
+    position: absolute;
+    top: 49%;
+    transform: translateY(-50%);
+    width: $base-unit;
+    height: $base-unit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: $base-unit * 0.5;
+      height: $base-unit * 0.5;
+    }
+  }
+}
+
+.nav-button-prev {
+  left: 0;
+  padding-left: $base-unit * 1.5;
+
+  .slide:first-child & {
+    display: none;
+  }
+
+  @include mq($min-width: $screen-l + 1) {
+    .slide.half-slide-active & {
+      display: none;
+    }
+  }
+
+  .slide.half-slide-previous.previous-to-active-slide & {
+    display: block;
+  }
+
+  .icon-svg {
+    left: $base-unit * 0.25;
+    transform: rotate(180deg) translateY(50%);
+  }
+}
+
+.nav-button-next {
+  right: 0;
+  padding-right: $base-unit * 1.5;
+
+  .slide:last-child & {
+    display: none;
+  }
+
+  @include mq($min-width: $screen-l + 1) {
+    .slide.previous-to-active-slide & {
+      display: none;
+    }
+  }
+
+  .icon-svg {
+    right: $base-unit * 0.25;
+  }
+}
+
+.pagination {
+  position: absolute;
+  top: $navigation-height;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: -1rem;
+  // line-height: ms-line-height(-1);
+  color: $bg-color-2;
+  cursor: default;
+}

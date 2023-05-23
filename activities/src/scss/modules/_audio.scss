@@ -1,0 +1,190 @@
+$media-audio-size: $base-unit * 20;
+
+.media-audio {
+  width: 100%;
+
+  .layout-vertical & {
+    // max-width: $media-audio-size;
+  }
+
+  .media-player {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    // max-width: $media-audio-size;
+    padding: $base-unit;
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .media-player-controls {
+    flex: 0 1 $base-unit * 3;
+  }
+
+  .media-player-meta {
+    flex: 1;
+    // margin-bottom: $base-unit;
+  }
+
+  .media-player-progress {
+    flex: 0 100%;
+  }
+}
+
+.media-player-audio-normal {
+  // padding-top: $base-unit * .75;
+  // padding-bottom: $base-unit * 1.5;
+
+  .media-player-progress {
+    margin-bottom: $base-unit * .5;
+  }
+
+  .media-player-meta {
+    padding-left: $base-unit * 0.5;
+    margin-bottom: $base-unit;
+  }
+}
+
+.media-player-audio-simple {
+  box-shadow: $box-shadow-small;
+  align-items: flex-end;
+  max-width: $media-audio-size;
+
+  .media-player-meta {
+    flex: 0 100%;
+    align-self: flex-start;
+    margin-bottom: $base-unit * 0.5;
+  }
+
+  .media-player-title {
+    font-size: ms(0);
+    line-height: ms-line-height(-1);
+    margin-bottom: 0;
+  }
+
+  .media-player-controls {
+    flex: 0;
+  }
+  .media-player-progress {
+    flex: 1 auto;
+  }
+
+  .media-player-time {
+    justify-content: flex-end;
+  }
+
+  .media-player-button {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  .media-player-canvas {
+    display: none;
+  }
+}
+
+.audio-wavesurfer {
+  flex: 0 100%;
+}
+
+.media-player__transcript {
+  display: none;
+
+  .media-player:hover & {
+    display: block;
+  }
+
+  position: absolute;
+  width: $base-unit;
+  height: $base-unit;
+  // bottom: $base-unit * -.5;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  button {
+    border: 0;
+    cursor: pointer;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    line-height: 0;
+
+    background-color: rgba($text-color, 0.9);
+    border: 1px solid rgba($bg-color-1, 1);
+    box-shadow: 0 0 $base-unit * 5 $base-unit * 2 rgba($text-color, 1);
+    color: $bg-color-1;
+
+    &:hover {
+      background-color: $text-color;
+      border-color: $text-color;
+    }
+
+    &::before {
+      top: 50%;
+      right: calc(100% + #{$base-unit * 0.25});
+      transform: translateY(-50%);
+      // top: 100%;
+      // left: 50%;
+      // transform: translateX(-50%);
+    }
+
+    &:hover {
+      background-color: $bg-color;
+      border-color: $bg-color;
+      color: $text-color;
+    }
+
+    svg {
+      fill: currentColor;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .transcript {
+    display: none;
+  }
+}
+
+// same as `.editor .canvas` in _editor.component.scss with some changes because of context
+.transcript {
+  background: $bg-color;
+  border-radius: $base-border-radius;
+  box-shadow: $box-shadow;
+  line-height: ms-line-height(0);
+  // min-height: $base-unit * 19;
+  margin: 0 auto;
+  max-height: calc(100vh - #{$base-unit * 2});
+  overflow-y: auto;
+  padding: $base-unit * 1.5 $base-unit * .75;
+  text-align: left;
+
+  @include min-screen($screen-l) {
+    padding: $base-unit * 2;
+  }
+
+  &,
+  h1,
+  h2,
+  h3 {
+    font-family: $editor-font-family;
+  }
+
+  h1 {
+    line-height: ms-line-height(3);
+  }
+
+  h2 {
+    line-height: $base-unit * 1.25;
+    margin-bottom: $base-unit;
+  }
+
+  p {
+    margin-bottom: $base-unit * .5;
+  }
+}

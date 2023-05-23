@@ -1,0 +1,81 @@
+// ==================================================
+// Colors
+// ==================================================
+
+@use "sass:math";
+
+// ==================================================
+// Numbers & Math
+// ==================================================
+
+@function strip-unit($num) {
+  @return math.div($num, $num * 0 + 1);
+}
+
+// ==================================================
+// Typography
+// ==================================================
+
+// map the breakpoints
+// — font-size for <html>
+@mixin font-size($fs-map) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    } @else {
+      @include mq($min-width: map-get($breakpoints, $fs-breakpoint)) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+// — line-height for <body>
+@mixin line-height($fs-map) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      line-height: $base-line-height * strip-unit($fs-font-size) * 0.01;
+    } @else if $fs-breakpoint == xxl {
+      @include mq($min-width: map-get($breakpoints, $fs-breakpoint)) {
+        line-height: $base-line-height * strip-unit(map-get($font-sizes, l)) *
+          0.01;
+      }
+    } @else {
+      @include mq($min-width: map-get($breakpoints, $fs-breakpoint)) {
+        line-height: $base-line-height * strip-unit($fs-font-size) * 0.01;
+      }
+    }
+  }
+}
+
+@function ms-line-height($level) {
+  @return map-get($ms-line-heights, $level);
+}
+
+@mixin heading($heading, $heading-weight: 400) {
+  @if map-has-key($headings, $heading) {
+    $properties: map-get($headings, $heading);
+
+    font-size: nth($properties, 1);
+    line-height: nth($properties, 2);
+    margin-top: nth($properties, 3);
+    margin-bottom: nth($properties, 4);
+    font-weight: $heading-weight;
+    // color: $heading-color;
+  }
+}
+
+// ==================================================
+// Numbers & Math
+// ==================================================
+
+@mixin list-border-radius {
+  &:first-of-type {
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+  }
+  &:last-of-type {
+    border-bottom-left-radius: $base-border-radius;
+    border-bottom-right-radius: $base-border-radius;
+  }
+}

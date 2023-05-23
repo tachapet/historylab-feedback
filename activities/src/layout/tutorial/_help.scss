@@ -1,0 +1,89 @@
+@import '../../scss/variables/variables';
+@import '../../scss/variables/colors';
+@import '../../scss/tools/vendor/_media-queries.scss';
+@import '../../scss/tools/vendor/modular-scale/function';
+@import '../../scss/tools/libs/toolbox';
+
+$help-size: $base-unit * 1.25;
+
+.help-container {
+  align-items: center;
+  padding-bottom: $base-unit * .875;
+  margin-bottom: $base-unit;
+  line-height: 0;
+  background-color: $bg-color;
+  color: $bg-color-2;
+
+  //
+  @if $theme == light {
+    color: $text-color;
+  }
+}
+
+.help-activities {
+  cursor: help;
+  display: inline-flex;
+  position: relative;
+}
+
+.help-activity {
+  width: $help-size;
+  height: $help-size;
+  margin: 0 ($base-unit * 0.125);
+  border: 2px solid;
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: content-box;
+
+  .icon-svg {
+    width: $help-size;
+    height: $help-size;
+  }
+}
+
+.help-text {
+  display: none;
+  position: absolute;
+  top: calc(100% + #{$base-unit * .875});
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100vw - #{$base-unit});
+  max-width: 600px;
+  padding: $base-unit;
+  border-radius: $base-border-radius;
+  font-size: ms(-1);
+  line-height: ms-line-height(-2);
+  background-color: $text-color;
+  box-shadow: $box-shadow;
+  z-index: 999;
+
+  @include min-screen($screen-l) {
+    width: 38vw;
+  }
+
+  .help-activities:hover & {
+    display: block;
+  }
+
+  &::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+
+    // pointer-events: none;
+    border-color: rgba($text-color, 0);
+    border-bottom-color: $text-color;
+    border-width: $base-unit * .875;
+    margin-left: -$base-unit * .875;
+  }
+
+  h6 {
+    color: $bg-color;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+}

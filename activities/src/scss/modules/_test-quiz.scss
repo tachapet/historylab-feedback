@@ -1,0 +1,123 @@
+@use "sass:math";
+
+.test-quiz {
+  flex: 1;
+}
+
+.gallery-container {
+  + .test-quiz {
+    max-width: $editor-width + $editor-width * math.div(1, 3);
+    padding: 0;
+
+    .table-container {
+      width: 100%;
+    }
+
+    .heading {
+      text-align: left;
+      justify-content: flex-start;
+    }
+  }
+}
+
+.test-quiz-container {
+  overflow: hidden;
+  width: calc(100% - #{$base-unit * 2});
+  margin: 0 auto;
+  background: $color-bg-1;
+  box-shadow: $box-shadow;
+  border-radius: $base-border-radius;
+  margin-bottom: $base-unit;
+  line-height: ms-line-height(0);
+
+  @include mq($min-width: $screen-xl) {
+    width: 80%;
+    max-width: $base-unit * 54;
+
+    .previous-slide & {
+      width: calc(100% - #{$base-unit * 2});
+    }
+  }
+
+  .test-quiz-item {
+    min-height: $base-unit * 3;
+    display: flex;
+    border-radius: 0;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid currentColor;
+    }
+  }
+
+  .heading,
+  .option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: ms-line-height(-1);
+  }
+
+  .heading {
+    background-color: $color-bg--1;
+    flex: 2;
+    padding: $base-unit * 0.25 $base-unit * 0.5;
+  }
+
+  .option {
+    border-left: 1px solid $color-bg--1;
+    flex: 1;
+    justify-content: center;
+    padding: $base-unit * 0.25;
+
+    &.selected,
+    &:hover {
+      color: currentColor;
+      cursor: pointer;
+
+      .tick {
+        border-color: currentColor;
+      }
+    }
+
+    &.selected {
+      background-color: white;
+    }
+
+    .tick {
+      border: 1px solid currentColor;
+      border-radius: $base-unit;
+      display: inline-block;
+      width: $base-unit;
+      height: $base-unit;
+      vertical-align: middle;
+      margin-right: $base-unit * 0.5;
+      position: relative;
+      line-height: $base-unit * 0.9;
+
+      &:before {
+        content: '\2713';
+        opacity: 0;
+        position: relative;
+        font-size: ms(1);
+      }
+    }
+
+    &:hover .tick:before,
+    &.selected .tick:before {
+      opacity: 1;
+    }
+  }
+
+  .half-slide-active & {
+    width: 100%;
+
+    .option {
+      flex-direction: column;
+    }
+
+    .tick {
+      margin-right: 0;
+      margin-bottom: $base-unit * 0.25;
+    }
+  }
+}

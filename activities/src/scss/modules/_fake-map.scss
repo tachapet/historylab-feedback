@@ -1,0 +1,35 @@
+.fake-map-items {
+  margin-bottom: $base-unit;
+}
+
+.fake-map-item {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.fake-map-buttons {
+  color: $bg-color-1;
+}
+
+.fake-map-buttons-label {
+  margin-bottom: $base-unit * .5;
+}
+
+.fake-map-buttons-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .button {
+    margin: 0 $base-unit * .25 $base-unit * .5;
+
+    &:hover,
+    &.active {
+      color: $bg-color;
+      background-color: $text-color;
+    }
+  }
+}

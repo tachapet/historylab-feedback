@@ -1,0 +1,54 @@
+@import '../../scss/variables/variables';
+@import '../../scss/variables/colors';
+@import '../../scss/tools/vendor/_media-queries.scss';
+@import '../../scss/tools/vendor/modular-scale/function';
+@import '../../scss/tools/libs/toolbox';
+
+.zadani {
+  max-width: $base-unit * 45;
+  padding: 0 $base-unit;
+  margin: $base-unit 0 $base-unit * .75;
+
+  // *:last-child {
+  //   margin-bottom: 0;
+  // }
+
+  h1 {
+    font-size: 1.9rem;
+    line-height: ms-line-height(2);
+    margin-bottom: 0;
+  }
+
+  h1 + h2 {
+    font-size:  1rem;
+    // line-height: ms-line-height(1);
+    margin: $base-unit * .25 auto 0;
+    display: block;
+    max-width: $base-unit * 35;
+  }
+}
+
+.zadani-row{
+  background-color: $bg-color;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0 $base-unit * .5;
+
+  @include min-screen($screen-l) {
+    padding: 0 $base-unit;
+  }
+
+  &.slideNaPul {
+    padding: 0;
+  }
+
+  &.with-submodule,
+  &.module-with-draggable {
+    justify-content: center;
+
+    @include max-screen($screen-l) {
+      flex-direction: column;
+    }
+  }
+}

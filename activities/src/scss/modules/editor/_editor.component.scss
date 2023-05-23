@@ -1,0 +1,70 @@
+.editor-container {
+  flex: 1 1 $editor-width;
+  max-width: 100%;
+
+  @include max-screen($screen-l) {
+    margin: 0 auto;
+  }
+
+  @include min-screen($screen-l) {
+    padding: 0 $base-unit;
+
+    .active-slide .gallery-container + & {
+      flex: 0 1 $editor-width;
+      padding: 0;
+    }
+  }
+}
+
+.editor {
+  line-height: ms-line-height(0);
+  margin: 0 auto;
+
+  &,
+  h1,
+  h2,
+  h3 {
+    font-family: $editor-font-family;
+  }
+
+  h2 {
+    line-height: $base-unit * 1.25;
+    margin-bottom: $base-unit;
+  }
+
+  p {
+    margin-bottom: $base-unit * .5;
+  }
+
+  .canvas {
+    background: $bg-color;
+    min-height: $base-unit * 19;
+    text-align: left;
+    padding: $base-unit * 1.5 $base-unit * .75;
+    border-radius: $base-border-radius;
+    box-shadow: $box-shadow;
+
+    @include min-screen($screen-l) {
+      padding: $base-unit * 2;
+    }
+
+    .user-inserted-text {
+      word-wrap: break-word;
+    }
+  }
+
+  a {
+    color: $text-color;
+  }
+
+  h1 {
+    line-height: ms-line-height(3);
+  }
+
+  small {
+    display: inline-block;
+    font-size: ms(-1);
+    line-height: ms-line-height(-2);
+  }
+
+}

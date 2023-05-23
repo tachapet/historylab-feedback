@@ -1,0 +1,94 @@
+// same as .text-option in _editor.text-option.scss
+.node-selected {
+  cursor: default;
+  display: inline;
+  position: relative;
+  z-index: 1;
+  padding: calc(#{($base-unit * 0.125)} - 1px) ($base-unit * 0.25) 0;
+  border-radius: $base-border-radius + 1;
+  border: 1px solid $bg-color;
+  line-height: ms-line-height(-2);
+
+  &:hover {
+    border-color: rgba($text-color, .38);
+    z-index: 2;
+  }
+
+  .previous-slide &,
+  .cell-read-only & {
+    padding: 0 ($base-unit * 0.25);
+
+    .node-close {
+      display: none;
+    }
+  }
+
+  &.active {
+    opacity: .5;
+  }
+
+  // TODO: add svg icon instead of Unicode "×"
+  .node-close {
+    cursor: pointer;
+    display: inline-block;
+    width: $base-unit * 0.7;
+    height: $base-unit * 0.7;
+    font-family: $ui-font-family;
+    font-size: ms(-1);
+    color: currentColor;
+    border-radius: $base-unit * 0.7;
+    margin-left: $base-unit * .15;
+    opacity: .62;
+    text-align: center;
+    // vertical-align: middle;
+
+    &:hover {
+      color: $bg-color;
+      background-color: $text-color;
+      box-shadow: $button-shadow;
+      opacity: 1;
+    }
+  }
+
+  // JIŘÍ: Co je a kde se vyskytuje .status?
+  .title {
+    position: absolute;
+    left: -60px;
+    top: 25%;
+    color: #000;
+    transform: rotate(-90deg);
+    display: inline-block;
+  }
+}
+
+.has-comments {
+  cursor: pointer;
+}
+
+.node-text-red {
+  @extend .text-red !optional;
+}
+
+.node-text-blue {
+  @extend .text-blue !optional;
+}
+
+.node-text-gray {
+  @extend .text-gray !optional;
+}
+
+.node-text-orange {
+  @extend .text-orange !optional;
+}
+
+.node-text-yellow {
+  @extend .text-yellow !optional;
+}
+
+.node-text-green {
+  @extend .text-green !optional;
+}
+
+.node-text-black {
+  @extend .text-black !optional;
+}

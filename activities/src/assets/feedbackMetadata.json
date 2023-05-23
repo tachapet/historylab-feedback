@@ -1,0 +1,279 @@
+{
+  "slide-initial": [],
+  "test-zpetne-vazby-1": [],
+  "test-zpetne-vazby-2": [
+    {
+      "id": "checkBox21",
+      "type": "checkboxGroup",
+      "inputs": [
+        {
+          "id": "neprectenyPopisek2",
+          "name": "Nepřečtený popisek"
+        },
+        {
+          "id": "neoznacenyBod2",
+          "name": "Neoznačený důležitý bod"
+        },
+        {
+          "id": "nevyplnene2",
+          "name": "Nevyplněné"
+        }
+      ]
+    },
+    {
+      "id": "checkBox22",
+      "type": "checkboxGroup",
+      "inputs": [
+        {
+          "id": "thumbUp2",
+          "name": "\uD83D\uDC4D"
+        },
+        {
+          "id": "thumbDown2",
+          "name": "\uD83D\uDC4E"
+        },
+        {
+          "id": "smile2",
+          "name": "\uD83D\uDE04"
+        },
+        {
+          "id": "hearth2",
+          "name": "❤"
+        },
+        {
+          "id": "writeMore2",
+          "name": "\uD83D\uDCDD"
+        },
+        {
+          "id": "oneHundred2",
+          "name": "\uD83D\uDCAF"
+        },
+        {
+          "id": "question2",
+          "name": "❓"
+        },
+        {
+          "id": "target2",
+          "name": "\uD83C\uDFAF"
+        }
+      ]
+    },
+    {
+      "id": "userText2",
+      "type": "userText",
+      "placeholder": "Poznámka pro žáka"
+    },
+    {
+      "id": "audio2",
+      "type": "audio",
+      "placeholderMic": "Hlasový záznam",
+      "placeholderRecord": "Zvuková nahrávka"
+    }
+  ],
+  "test-zpetne-vazby-3": [
+    {
+      "id": "checkBox3",
+      "type": "checkboxGroup",
+      "inputs": [
+        {
+          "id": "thumbUp3",
+          "name": "\uD83D\uDC4D"
+        },
+        {
+          "id": "thumbDown3",
+          "name": "\uD83D\uDC4E"
+        },
+        {
+          "id": "smile3",
+          "name": "\uD83D\uDE04"
+        },
+        {
+          "id": "hearth3",
+          "name": "❤"
+        },
+        {
+          "id": "writeMore3",
+          "name": "\uD83D\uDCDD"
+        },
+        {
+          "id": "oneHundred3",
+          "name": "\uD83D\uDCAF"
+        },
+        {
+          "id": "question3",
+          "name": "❓"
+        },
+        {
+          "id": "target3",
+          "name": "\uD83C\uDFAF"
+        }
+      ]
+    },
+    {
+      "id": "userText3",
+      "type": "userText",
+      "placeholder": "Poznámka pro žáka"
+    },
+    {
+      "id": "audio3",
+      "type": "audio",
+      "placeholderMic": "Hlasový záznam",
+      "placeholderRecord": "Zvuková nahrávka"
+    }
+  ],
+  "test-zpetne-vazby-4": [
+    {
+      "id": "checkBox41",
+      "type": "checkboxGroup",
+      "inputs": [
+        {
+          "id": "neprectenyPopisek4",
+          "name": "Nepřečtený popisek"
+        },
+        {
+          "id": "neoznacenyBod4",
+          "name": "Neoznačený důležitý bod"
+        },
+        {
+          "id": "nevyplnene4",
+          "name": "Nevyplněné"
+        }
+      ]
+    },
+    {
+      "id": "checkBox42",
+      "type": "checkboxGroup",
+      "inputs": [
+        {
+          "id": "thumbUp4",
+          "name": "\uD83D\uDC4D"
+        },
+        {
+          "id": "thumbDown4",
+          "name": "\uD83D\uDC4E"
+        },
+        {
+          "id": "smile4",
+          "name": "\uD83D\uDE04"
+        },
+        {
+          "id": "hearth4",
+          "name": "❤"
+        },
+        {
+          "id": "writeMore4",
+          "name": "\uD83D\uDCDD"
+        },
+        {
+          "id": "oneHundred4",
+          "name": "\uD83D\uDCAF"
+        },
+        {
+          "id": "question4",
+          "name": "❓"
+        },
+        {
+          "id": "target4",
+          "name": "\uD83C\uDFAF"
+        }
+      ]
+    },
+    {
+      "id": "userText4",
+      "type": "userText",
+      "placeholder": "Poznámka pro žáka"
+    },
+    {
+      "id": "audio4",
+      "type": "audio",
+      "placeholderMic": "Hlasový záznam",
+      "placeholderRecord": "Zvuková nahrávka"
+    }
+  ],
+  "test-zpetne-vazby-5": [
+    {
+      "id": "checkBox51",
+      "type": "checkboxGroup",
+      "inputs": [
+        {
+          "id": "SpravneUpravenaOdpoved5",
+          "name": "Správná odpověď"
+        },
+        {
+          "id": "nedosloKUpraveOdpovedi5",
+          "name": "Odpověď není relevantní"
+        },
+        {
+          "id": "podlozenaOdpoved5",
+          "name": "Odpověď není podložená fotografií"
+        },
+        {
+          "id": "nevyplnene5",
+          "name": "Nevyplněné"
+        }
+      ]
+    },
+    {
+      "id": "checkBox52",
+      "type": "checkboxGroup",
+      "inputs": [
+        {
+          "id": "thumbUp5",
+          "name": "\uD83D\uDC4D"
+        },
+        {
+          "id": "thumbDown5",
+          "name": "\uD83D\uDC4E"
+        },
+        {
+          "id": "smile5",
+          "name": "\uD83D\uDE04"
+        },
+        {
+          "id": "hearth5",
+          "name": "❤"
+        },
+        {
+          "id": "writeMore5",
+          "name": "\uD83D\uDCDD"
+        },
+        {
+          "id": "oneHundred5",
+          "name": "\uD83D\uDCAF"
+        },
+        {
+          "id": "question5",
+          "name": "❓"
+        },
+        {
+          "id": "target5",
+          "name": "\uD83C\uDFAF"
+        }
+      ]
+    },
+    {
+      "id": "userText5",
+      "type": "userText",
+      "placeholder": "Poznámka pro žáka"
+    },
+    {
+      "id": "audio5",
+      "type": "audio",
+      "placeholderMic": "Hlasový záznam",
+      "placeholderRecord": "Zvuková nahrávka"
+    }
+  ],
+  "slide-export": [
+    {
+      "id": "userTextExport",
+      "type": "userText",
+      "placeholder": "Poznámka pro žáka"
+    },
+    {
+      "id": "audio6",
+      "type": "audio",
+      "placeholderMic": "Hlasový záznam",
+      "placeholderRecord": "Zvuková nahrávka"
+    }
+  ]
+}

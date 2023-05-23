@@ -1,0 +1,131 @@
+.editors {
+  @include max-screen($screen-l) {
+    flex-direction: column;
+
+    > * {
+      margin-bottom: $base-unit;
+    }
+  }
+}
+
+.editor {
+  position: relative;
+  width: 100%;
+  max-width: $editor-width;
+  -webkit-touch-callout: none;
+
+  code {
+    font-size: ms(-1);
+  }
+}
+
+.editor.editor-editable .canvas {
+  background: #f1e0c4;
+  font-family: "Courier New", Courier, monospace;
+  font-size: ms(1);
+  line-height: ms-line-height(1);
+}
+
+.half-slide-active.active-slide,
+.previous-slide {
+  .editor {
+    width: auto;
+  }
+}
+
+// .user-inserted-text,
+// .user-removed-text {
+//   position: relative;
+
+
+//   // TODO: add svg icon instead of Unicode "×"
+//   .node-close {
+//     position: relative;
+//     cursor: pointer;
+//     color: currentColor;
+//     font-family: $ui-font-family;
+//     font-size: ms(-1);
+//     line-height: ms-line-height(0);
+//     text-align: center;
+//     // padding-right: $base-unit * 0.5;
+//     margin: 0 ($base-unit * 0.25) 0 ($base-unit * 0.125);
+
+//     &::before {
+//       content: "×";
+//       // position: absolute;
+//       // top: 50%;
+//       // left: 0;
+//       // transform: translateY(-50%);
+//       display: inline-block;
+//       width: $base-unit * 0.65;
+//       height: $base-unit * 0.65;
+//       line-height: $base-unit * 0.65;
+//       border: 1px solid currentColor;
+//       border-radius: 50%;
+//     }
+
+//     &:hover {
+//       &::before {
+//         background-color: $text-color;
+//         color: $bg-color;
+//         border: 1px solid $text-color;
+//       }
+//     }
+//   }
+// }
+
+// .user-inserted-text {
+//   color: rgb(31, 161, 93);
+// }
+
+// .user-removed-text {
+//   color: red;
+// }
+
+// .user-inserted-text-inner,
+// .user-removed-text-inner {
+//   border-top: 2px solid currentColor;
+//   border-bottom: 2px solid currentColor;
+// }
+
+// .user-inserted-text-inner {
+//   background-color: $bg-color-1;
+// }
+
+// .user-removed-text-inner {
+//   text-decoration: line-through;
+// }
+
+// .editor-toolbar {
+//   position: absolute;
+//   top: $base-unit * 0.5;
+//   right: $base-unit * 0.5;
+//   height: $base-unit * 1.25;
+
+//   display: flex;
+//   justify-content: flex-end;
+// }
+
+// .editor-toolbar-item {
+//   background-color: rgba($text-color, 0.38);
+//   border: 1px solid $bg-color-2;
+//   border-radius: $base-unit * 1.25;
+//   box-shadow: 0 ($base-unit * 0.125) ($base-unit * 0.25) rgba($text-color, 0.25);
+//   color: $bg-color;
+//   cursor: pointer;
+//   display: inline-block;
+//   font-family: $ui-font-family;
+//   font-size: ms(-2);
+//   letter-spacing: 0.05em;
+//   line-height: ms-line-height(-3);
+//   padding: ($base-unit * 0.1875) ($base-unit * 0.5) ($base-unit * 0.125);
+//   text-align: center;
+//   text-transform: uppercase;
+
+//   &:hover {
+//     background-color: rgba($text-color, 1);
+//     box-shadow: 0 ($base-unit * 0.125 * 0.66) ($base-unit * 0.25 * 0.66) rgba($text-color, 0.125);
+//     border-color: transparent;
+//   }
+// }
+

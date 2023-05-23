@@ -1,0 +1,147 @@
+@import '../../scss/variables/variables';
+@import '../../scss/variables/colors';
+@import '../../scss/tools/vendor/_media-queries.scss';
+@import '../../scss/tools/vendor/modular-scale/function';
+
+.slide-export {
+  .nav-button {
+    z-index: 9;
+    line-height: $navigation-height;
+    color: $bg-color-2;
+
+    &:hover {
+      color: $bg-color-1;
+
+      .icon-svg {
+        background-color: $bg-color-1;
+        color: $text-color;
+      }
+    }
+  }
+
+  .row {
+    position: relative;
+    color: $bg-color-1;
+    background-color: transparent;
+    min-height: 100%;
+    height: 100%;
+  }
+
+  .overlay {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+
+    &::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 17vh;
+    margin-bottom: 17vh;
+    max-width: $base-unit * 49;
+    width: 100%;
+    // padding: 0 $base-unit;
+  }
+
+  .user-texts-container {
+    background-color: transparent;
+    margin: 0 auto $base-unit;
+    width: 100%;
+
+    @include min-screen($screen-l) {
+      width: $base-unit * 15;
+    }
+  }
+
+  .zadani {
+    > * {
+      text-shadow: 0 1px 0.38em rgba($text-color, 0.62);
+    }
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  button {
+    &[type="button"] {
+      margin-bottom: $base-unit * 0.25;
+    }
+
+    &[data-nav-button="prev"] {
+      margin-bottom: $base-unit * 3;
+    }
+  }
+
+  svg {
+    fill: currentColor;
+  }
+
+  .privacy-policy {
+    position: absolute;
+    bottom: $base-unit * 5;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: ms(-2);
+    line-height: ms-line-height(-4);
+    margin-top: $base-unit * -.5;
+    max-width: $base-unit * 18;
+    opacity: .62;
+
+    @include max-screen($screen-l) {
+      padding-bottom: $base-unit * .5;
+      border-bottom: 1px solid rgba($bg-color-1, .38);
+    }
+
+    @include min-screen($screen-l) {
+      bottom: $base-unit;
+    }
+  }
+
+  .tacr {
+    width: auto;
+    position: absolute;
+    bottom: $base-unit * .5;
+
+    color: $bg-color-2;
+    font-size: ms(-2);
+    line-height: ms-line-height(-4);
+
+    @include max-screen($screen-l) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @include min-screen($screen-l) {
+      bottom: $base-unit;
+      right: $base-unit;
+    }
+  }
+
+  .tacr-logo {
+    width: $base-unit * 4;
+    height: $base-unit * 4;
+  }
+}

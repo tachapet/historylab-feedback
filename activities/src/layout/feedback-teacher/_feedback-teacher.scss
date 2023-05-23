@@ -1,0 +1,86 @@
+@import "../../scss/variables/variables";
+.feedback-teacher{
+  background-color: white;
+  position: absolute;
+  left:  0;
+
+  top: $base-unit * 3.5;
+  width: 20rem;
+  z-index: 2;
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 15px;
+  height: 85%;
+  border-radius: 0  10px 10px 0;
+  box-shadow: $box-shadow;
+  opacity: 0.3;
+  transition: opacity ease 0.5s;
+  padding: 1rem;
+
+  overflow: auto;
+
+  &:hover{
+    opacity: 1;
+  }
+
+}
+
+.feedback-user-text{
+  width: 100%;
+  padding: 1rem;
+  .feedback-textarea{
+    padding: 0.5rem;
+    width: 100%;
+}
+}
+
+
+.checkbox-group {
+  display: flex;
+  background: #fff;
+  //height: auto;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+  padding: 20px 15px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  gap: 0.5rem;
+  flex-wrap:wrap;
+
+  &.center{
+    justify-content: center;
+  }
+}
+
+.sq-input {
+  display: none;
+}
+
+.checkbox-group .option {
+  background: #fff;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+  min-width: 3rem;
+  justify-content: center;
+
+  span {
+    user-select: none;
+    color: #3a3a3a;
+  }
+
+  &.checked {
+    border-color: #0069d9;
+    background: #0069d9;
+    color: #fff;
+
+  }
+}

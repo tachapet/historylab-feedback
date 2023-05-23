@@ -1,0 +1,351 @@
+@use "sass:math";
+
+.svgs {
+  padding: 0 $base-unit * .5;
+
+  @include min-screen($screen-l) {
+    padding: 0 .5%;
+  }
+
+  &.with-submodule,
+  &.module-with-draggable {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.svgs__inner {
+  .svgs.layout-horizontal > & {
+    margin: 0;
+  }
+
+  .with-submodule:not(.layout-vertical) &,
+  .module-with-draggable:not(.layout-vertical) & {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  @include max-screen($screen-l - 1) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.svgs-container {
+  @include max-screen($screen-l - 1) {
+    width: 100%;
+    flex-direction: column;
+
+    .item {
+      margin-bottom: $base-unit;
+      width: 100%;
+    }
+  }
+
+  &.is-reversed {
+    flex-direction: column-reverse;
+  }
+
+  &.layout-vertical {
+    justify-content: flex-start;
+
+    .item {
+      margin-bottom: $base-unit;
+      width: 100%;
+      max-width: $base-unit * 30;
+    }
+  }
+
+  .svgs.layout-vertical & {
+    margin: 0 auto;
+  }
+
+  .svgs.with-submodule & {
+    @include min-screen($screen-l) {
+      // TODO: was a quick fix, test it properly
+      flex: 0 1 $base-unit * 30;
+    }
+  }
+
+  .svgs.module-with-draggable & {
+    flex: 3;
+  }
+
+  .svgs:not(.module-with-draggable) & {
+    display: flex;
+  }
+
+  .svgs.module-with-draggable.layout-vertical & {
+    display: flex;
+
+    @include min-screen($screen-l + 1) {
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .svgs__item {
+      flex: 3 1 0;
+      padding: 0 ($base-unit * 0.25);
+    }
+  }
+
+  .svgs.module-with-draggable:not(.layout-vertical) & {
+
+    @include min-screen($screen-l + 1) {
+      align-self: flex-start;
+      position: sticky;
+      top: $base-unit;
+
+      // because of sticky left side (gallery, draggable) when horizontal layout
+      z-index: 1;
+    }
+  }
+
+  .item {
+    position: relative;
+  }
+
+}
+
+.svgs__item {
+  position: relative;
+  margin-bottom: $base-unit;
+}
+
+// .svg
+svg[data-svg-target] {
+  box-shadow: $box-shadow;
+  border-radius: $base-border-radius;
+  // fix for IE
+  // position: absolute;
+  width: 100%;
+  height: auto;
+  // height: 1px;
+  // overflow: visible;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+
+  .with-submodule &,
+  .module-with-draggable:not(.layout-vertical) & {
+    margin: 0;
+  }
+
+  // kreslení
+  path {
+    fill: none;
+    stroke: yellow;
+    stroke-width: 5;
+
+    &.red {
+      stroke: red;
+    }
+
+    &.blue {
+      stroke: blue;
+    }
+  }
+
+  image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+foreignObject {
+  overflow: visible;
+
+  &:not(.svg-text) {
+    > * {
+      box-shadow: 0 0 ($base-unit * 0.25) rgba($text-color, 0.2);
+      transition: transform $base-duration $timing-out;
+
+      &:hover {
+        // // transform: scale3d(1.05, 1.05, 1); doesnt work on iOS doesnt work on iOS
+        box-shadow: 0 0 ($base-unit * 0.25) rgba($text-color, 0.38);
+      }
+    }
+  }
+}
+
+.svg-category-label {
+  font-size: ms(0);
+  font-weight: bold;
+  text-shadow: 0 0 2px white, 0 0 15px white;
+  white-space: nowrap;
+}
+
+.svg-category-label + .svg-textarea {
+  margin-top: $base-unit * .6;
+}
+
+.svg-textarea {
+  cursor: pointer;
+  background: rgba(white, .85);
+  border: 4px solid transparent;
+  border-radius: $base-border-radius * 5;
+
+  // border-top-left-radius: 0;
+  box-shadow: 0 0 ($base-unit * 0.25) rgba($text-color, 0.2);
+  font-size: ms(1);
+
+  padding: calc(#{$base-unit * 0.5} - 2px);
+  resize: none;
+  overflow: hidden;
+  word-wrap: break-word;
+  transition: border-color $base-duration $base-timing; 
+
+  &:hover {
+    border-color: rgba($text-color, .38);
+  }
+
+  &:focus,
+  .is-dragged & {
+    border-color: $text-color;
+    box-shadow: 0;
+    outline: 0;
+  }
+
+  &:focus {
+    cursor: initial;
+  }
+
+  &.is-wrong {
+    background-color: red;
+  }
+
+  .svg-comic-narration & {
+    border-bottom-left-radius: $base-border-radius;
+    border-bottom-right-radius: $base-border-radius;
+  }
+
+  .svg-text.orientation-left.orientation-top & {
+    border-bottom-right-radius: 0;
+  }
+  .svg-text.orientation-left.orientation-bottom & {
+    border-top-right-radius: 0;
+  }
+  .svg-text.orientation-right.orientation-top & {
+    border-bottom-left-radius: 0;
+  }
+  .svg-text.orientation-right.orientation-bottom & {
+    border-top-left-radius: 0;
+  }
+
+}
+
+.svg-circle {
+  r: math.div($svg-circle-size, 2);
+  fill: blue;
+  stroke-width: 5px;
+  stroke: blue;
+  cursor: pointer;
+
+  &.red {
+    fill: rgba(red, .38);
+    stroke: red;
+
+    &:hover,
+    .is-dragged & {
+      fill: red;
+    }
+  }
+
+  &.orange {
+    fill: rgba(orange, .38);
+    stroke: orange;
+
+    &:hover,
+    .is-dragged & {
+      fill: orange;
+    }
+  }
+
+  &.blue {
+    fill: rgba(blue, .38);
+    stroke: blue;
+
+    &:hover,
+    .is-dragged & {
+      fill: blue;
+    }
+  }
+}
+
+.svg-circle-text {
+  r: math.div($svg-circle-size * .5, 2);
+  fill: $text-color;
+  stroke-width: 0;
+
+  &.red {
+    fill: red;
+  }
+
+  &.blue {
+    fill: blue;
+  }
+}
+
+.svg-path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: pointer;
+  will-change: stroke-width;
+  transition: stroke-width $base-duration $base-timing;
+  user-select: none;
+
+  &:hover {
+    stroke-width: 9;
+  }
+}
+
+.is-dragged,
+.is-dragged > * {
+  cursor: -moz-grabbing !important;
+  cursor: -webkit-grabbing !important;
+  cursor: grabbing !important;
+}
+
+// SVG KOMIKS
+// predefined comic bubbles
+
+// .svg-komiks {}
+
+.svg-text {
+
+  &.top.left {
+    .svg-textarea {
+      border-top-left-radius: 0;
+    }
+  }
+
+  &.top.right {
+    .svg-textarea {
+      border-top-right-radius: 0;
+    }
+  }
+
+  &.bottom.right {
+    .svg-textarea {
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &.bottom.left {
+    .svg-textarea {
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+// fix primary for touch iOS devices
+.unselectable {
+  user-select: none;
+}    
+
+// .svg-komiks-promluva {}
+
+// .svg-komiks-myslenka {}
+
+// .svg-komiks-vypravec {}

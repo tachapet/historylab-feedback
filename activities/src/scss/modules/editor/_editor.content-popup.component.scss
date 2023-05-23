@@ -1,0 +1,18 @@
+$max_width: 350px;
+
+.editor-content-popup {
+    position: absolute;
+    box-shadow: 0 4px 10px 2px rgba(0,0,0,.1);
+    background: #fff;
+
+    animation: fadeIn .25s;
+    max-width: $max_width;
+    .editor-content-popup-content {
+        padding: 2em;
+    }
+
+    img {width: 100%; max-width: $max_width}
+
+}
+
+

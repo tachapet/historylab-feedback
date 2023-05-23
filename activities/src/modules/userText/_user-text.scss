@@ -1,0 +1,126 @@
+@import "../../scss/variables/colors";
+@import "../../scss/variables/variables";
+@import "../../scss/tools/vendor/media-queries";
+
+.user-texts {
+  margin-bottom: $base-unit;
+}
+
+.user-texts-container {
+  color: $bg-color;
+  margin-bottom: 0;
+  width: 100%;
+
+  @include min-screen($screen-l) {
+    width: calc(100% - #{$base-unit * 2});
+  }
+
+  &.layout-horizontal {
+    @include min-screen($screen-l) {
+      width: 100%;
+    }
+  }
+
+  &.layout-vertical {
+    display: block;
+  }
+
+  .table-new__container + &,
+  .gallery-container + & {
+    width: 100%;
+    padding: $base-unit * .5 $base-unit * .5 0;
+
+    @include min-screen($screen-l + 1) {
+      flex: 0 1 $usertext-width;
+      max-width: 40%;
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  display: flex;
+  justify-content: center;
+
+  .column & {
+    flex-direction: column;
+  }
+
+  .captions + &,
+  .sources + & {
+    margin-top: $base-unit * -1;
+  }
+
+  h3 {
+    color: currentColor;
+    max-width: $usertext-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  textarea {
+    max-width: $usertext-width;
+    width: 100%;
+    height: auto;
+    padding: $base-unit;
+    border: 1px solid $bg-color;
+    resize: vertical;
+    border-radius: $base-border-radius;
+    transition: width 0.38s;
+  }
+
+}
+
+.user-text {
+  position: relative;
+
+  &:not(:last-of-type) {
+    margin-bottom: $base-unit;
+  }
+
+  .layout-horizontal & {
+    margin-bottom: 0;
+  }
+
+  // fix spacing for smaller textareas
+  // TODO: make textarea variants: small, normal, large
+  .layout-horizontal &.item-3 textarea,
+  .layout-horizontal &.item-4 textarea,
+  .layout-horizontal &.item-5 textarea {
+    padding: $base-unit * .75;
+  }
+}
+
+.user-text__textarea {
+  position: relative;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.user-text__counter {
+  position: absolute;
+  bottom: $base-unit * .75;
+  right: $base-unit * .5;
+
+  color: $bg-color-2;
+  display: none;
+  font-size: ms(-2);
+  line-height: 0;
+  opacity: .62;
+  pointer-events: none;
+
+  .is-used + & {
+    display: block;
+  }
+
+  &.color-red {
+    color: mix(red, $bg-color-2, 70%);
+  }
+
+  &.color-orange {
+    color: mix(orange, $bg-color-2);
+  }
+
+  &.color-green {
+    color: mix(#00AA58, $bg-color-2, 80%);
+  }
+}

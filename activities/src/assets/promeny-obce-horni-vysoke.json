@@ -1,0 +1,193 @@
+{
+  "activity": {
+    "version": {
+      "global": "5.5",
+      "content": 2
+    },
+    "catalog": [
+      "test",
+      "public"
+    ],
+    "language": "cs",
+    "slug": "test-zpetne-vazby",
+    "name": "Test zpětné vazby",
+    "author": [
+      "Petr Tácha"
+    ],
+    "annotation": {
+      "teacher": "Testovací cvičení pro zpětnou vazbu.",
+      "public": "Testovací cvičení pro zpětnou vazbu. Upravené cvičení Proměny obce Horní Vysoké"
+    },
+    "time": 20,
+    "difficulty": "nízká",
+    "features": [
+      "magnificentGlass",
+      "read",
+      "text",
+      "svg",
+      "points"
+    ],
+    "introductoryImage": "pic-00-1280w.jpg",
+    "id": 6,
+    "color": {
+      "rgb": {
+        "r": 98,
+        "g": 89,
+        "b": 76
+      },
+      "hsv": {
+        "h": 35,
+        "s": 22.45,
+        "v": 38.43
+      }
+    },
+    "mobileData": {
+      "mobileFriendly": 1,
+      "touch": 2,
+      "smallScreen": 1,
+      "tabletScreen": 2
+    }
+  },
+  "slides": [
+    {
+      "assignment": {
+        "main": "Prohlédněte si fotografii.",
+        "extended": ""
+      },
+      "tutorial": {
+        "activities": [
+          "magnifyingGlass"
+        ],
+        "text": ""
+      },
+      "sources": [
+        "co-kluci-provedli/pic-00-1280w.jpg"
+      ],
+      "labels": [
+        "Ober-Weissig, 1925. Zdroj: Antikomplex, z.s."
+      ]
+    },
+    {
+      "class": [
+        ""
+      ],
+      "assignment": {
+        "main": "Označte na fotografii důležité prvky a popište je.",
+        "extended": ""
+      },
+      "tutorial": {
+        "activities": [
+          "svg"
+        ],
+        "text": "Kliknutím na snímek levým tlačítkem myši označujete bod. Nakliknutím na bod pravým tlačítkem otevřete menu s nabídkou úkonů: (T) doplnit textový komentář, (X) smazat nakliknutý objekt."
+      },
+      "svg": {
+        "files": [
+          {
+            "id": "svg-1",
+            "file": "pic-00-1280w.jpg",
+            "colors": [
+              "blue",
+              "red"
+            ],
+            "features": [
+              "text",
+              "points",
+              "draw"
+            ]
+          }
+        ]
+      },
+      "labels": [
+        "Ober-Weissig, 1925. Zdroj: Antikomplex, z.s."
+      ]
+    },
+    {
+      "class": [
+        ""
+      ],
+      "assignment": {
+        "main": "Proč je na fotografii spousta obchodů a benzínová pumpa?",
+        "extended": "Zkuste se zamyslet, na jakém místě se obec nachází."
+      },
+      "tutorial": {
+        "activities": [
+          "text"
+        ],
+        "text": "Do boxu pro text zapisujete odpověď na otázku, nebo jiný komentář (dle zadání)."
+      },
+      "userText": {
+        "questions": [
+          {
+            "id": "otazka-1",
+            "assignments": "",
+            "instruction": "Myslím si, že…",
+            "minLength": 2,
+            "maxLength": 400
+          }
+        ]
+      }
+    },
+    {
+      "class": [
+        ""
+      ],
+      "assignment": {
+        "main": "Prohlédněte a popište současnou podobu místa.",
+        "extended": ""
+      },
+      "tutorial": {
+        "activities": [
+          "svg"
+        ],
+        "text": "Kliknutím na snímek levým tlačítkem myši označujete bod. Nakliknutím na bod pravým tlačítkem otevřete menu s nabídkou úkonů: (T) doplnit textový komentář, (X) smazat nakliknutý objekt."
+      },
+      "svg": {
+        "files": [
+          {
+            "id": "svg-2",
+            "file": "pic-01-1280w.jpg",
+            "colors": [
+              "blue",
+              "red"
+            ],
+            "features": [
+              "text",
+              "points",
+              "draw"
+            ]
+          }
+        ]
+      },
+      "labels": [
+        "Horní Vysoké, 2004. Zdroj: Antikomplex, z.s."
+      ]
+    },
+    {
+      "class": [
+        ""
+      ],
+      "assignment": {
+        "main": "Jak se změnilo místo na fotografii?",
+        "extended": "Proč se tomu tak stalo?"
+      },
+      "tutorial": {
+        "activities": [
+          "text"
+        ],
+        "text": "Do boxu pro text zapisujete odpověď na otázku, nebo jiný komentář (dle zadání)."
+      },
+      "userText": {
+        "questions": [
+          {
+            "id": "otazka-2",
+            "assignments": "",
+            "instruction": "Myslím si, že…",
+            "minLength": 2,
+            "maxLength": 400
+          }
+        ]
+      }
+    }
+  ]
+}

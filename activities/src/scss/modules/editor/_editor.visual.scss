@@ -1,0 +1,62 @@
+.text-red {
+  background-color: orangered !important;
+  color: $text-color;
+
+  .editor & {
+    background-color: rgba(orangered,.7) !important;
+  }
+}
+
+.text-blue {
+  background-color: lightskyblue !important;
+  color: $text-color;
+
+  .editor & {
+    background-color: rgba(lightskyblue,.7) !important;
+  }
+}
+
+.text-orange {
+  background-color: orange !important;
+  color: $text-color;
+
+  .editor & {
+    background-color: rgba(orange,.7) !important;
+  }
+}
+
+.text-gray {
+  background-color: gray !important;
+  color: $text-color;
+
+  .editor & {
+    background-color: rgba(gray,.7) !important;
+  }
+}
+
+.text-yellow {
+  background-color: yellow !important;
+  color: $text-color;
+
+  .editor & {
+    background-color: rgba(yellow,.7) !important;
+  }
+}
+
+.text-green {
+  background-color: green !important;
+  color: $text-color;
+
+  .editor & {
+    background-color: rgba(green,.7) !important;
+  }
+}
+
+.text-black {
+  background-color: black !important;
+  color: $bg-color-1;
+
+  .editor & {
+    background-color: rgba(black,.7) !important;
+  }
+}

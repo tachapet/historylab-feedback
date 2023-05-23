@@ -1,0 +1,33 @@
+.captions {
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: $base-unit;
+  color: $base-color;
+  font-size: ms(-1);
+  line-height: ms-line-height(-2);
+
+  @include min-screen($screen-l) {
+    flex-direction: row;
+  }
+
+}
+
+.caption {
+  padding: 0 $base-unit * .25 $base-unit * .25 $base-unit * .25;
+
+  @include min-screen($screen-l) {
+    padding: 0 $base-unit * .25;
+  }
+
+  p {
+    display: inline-block;
+    text-align: center;
+    max-width: $base-unit * 20;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include min-screen($screen-l) {
+      text-align: left;
+    }
+  }
+}

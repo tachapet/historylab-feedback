@@ -1,0 +1,104 @@
+@import "../../scss/variables/colors";
+@import "../../scss/variables/variables";
+@import "../../scss/tools/vendor/media-queries";
+
+
+.sources {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: $bg-color-2;
+  padding-bottom: $base-unit;
+  line-height: 0;
+
+  .col-2 & {
+    flex-wrap: wrap;
+  }
+
+  @include min-screen($screen-l) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.sources--grid {
+  @include min-screen($screen-l) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($base-unit * 17, 1fr));
+  }
+}
+
+.source {
+  flex: 3 1 0;
+  padding: $base-unit * 0.25;
+
+  .with-submodule &,
+  .module-with-draggable & {
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .has-gallery & {
+    max-width: 62vw;
+  }
+
+  .layout-vertical & {
+    margin-bottom: $base-unit;
+  }
+
+  .col-2 & {
+    flex: 1 50%;
+
+    &:first-child {
+      margin-bottom: $base-unit;
+    }
+  }
+
+  image,
+  img {
+    max-width: 100%;
+    // width: 100%;
+  }
+
+  .source-image,
+  .svg {
+    max-height: 90vh;
+    // max-width: 62vw;
+    box-shadow: $box-shadow;
+    border-radius: $base-border-radius;
+  }
+}
+
+.source-container {
+  display: inline-block;
+  position: relative;
+}
+
+.column {
+  &.half-slide-previous.previous-slide {
+    .sources {
+      flex-flow: column;
+    }
+
+    .source {
+      margin: 0 auto $base-unit;
+    }
+  }
+}
+
+// TODO: remove slide classes, use modifiers on modules
+// promeny-mesta-zlin, slide 1, 8
+.slide-layout-column {
+  .sources {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .source {
+      margin-bottom: $base-unit;
+      width: 100%;
+      max-width: $base-unit * 30;
+    }
+  }
+}

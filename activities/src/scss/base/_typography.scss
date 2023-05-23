@@ -1,0 +1,247 @@
+@use "sass:math";
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  @include font-size($font-sizes);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  @include line-height($font-sizes);
+  position: relative;
+  background-color: $base-color;
+  color: $text-color;
+  font-family: $base-font-family;
+  font-feature-settings: "kern", "liga", "pnum";
+  font-weight: 400;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: $heading-font-family;
+  // font-size: $base-font-size;
+  // line-height: $heading-line-height;
+  // margin: 0 0 $base-unit / 2;
+}
+
+h1,
+.h1 {
+  @include heading(h1, 400);
+  letter-spacing: -0.03em;
+}
+
+h2,
+.h2 {
+  @include heading(h2, 400);
+  letter-spacing: -0.01em;
+}
+
+h3,
+.h3 {
+  @include heading(h3, 400);
+}
+
+h4,
+.h4 {
+  @include heading(h4, 400);
+}
+
+h5,
+.h5 {
+  @include heading(h5, 400);
+  text-transform: uppercase;
+}
+
+h6,
+.h6 {
+  @include heading(h6, 400);
+}
+
+// Set margins between headings
+h1 + h2,
+.h1 + .h2 {
+  margin-top: $base-unit;
+}
+
+h2 + h3,
+.h2 + .h3 {
+  // line-height: modular-scale-line-height(2);
+  margin-top: math.div($base-unit, -2) * 1.1;
+  margin-bottom: $base-unit;
+}
+
+h3 + h4,
+.h3 + .h4,
+h4 + h5,
+.h4 + .h5 {
+  margin-top: $base-unit * 0.5;
+}
+
+h5 + h6,
+.h5 + .h6 {
+  margin-top: math.div($base-unit, -2);
+}
+
+//
+p {
+  margin: 0 0 $base-unit;
+
+  &.text-smaller {
+    margin-bottom: $base-unit * 0.5;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+//
+a {
+  color: $action-color;
+  text-decoration: none;
+  transition: $transition-all;
+  border-bottom: 1px solid transparent;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: darken($action-color, 10);
+    border-bottom-color: darken($action-color, 10);
+  }
+}
+
+//
+blockquote {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-style: italic;
+  @include mq($min-width: $screen-l) {
+    &::before {
+      content: "„";
+      position: absolute;
+      bottom: 100%;
+      right: calc(100% + #{$base-unit * 0.25});
+      font-size: ms(7);
+    }
+  }
+
+  p {
+    margin: 0 0 $base-unit * 0.5;
+
+    &:last-of-type {
+      margin-bottom: $base-unit * 0.5;
+    }
+  }
+
+  + .source,
+  + .zdroj {
+    text-align: right;
+  }
+}
+
+dt {
+  margin-bottom: $base-unit * 0.25;
+
+  a {
+    font-size: ms(1);
+    color: $text-color;
+    // line-height: ms-line-height(-2);
+  }
+}
+
+dd {
+  font-size: ms(-1);
+  line-height: ms-line-height(-2);
+  max-width: $base-unit * 20;
+  margin-left: 0;
+
+  &:not(:last-child) {
+    margin-bottom: $base-unit;
+  }
+}
+
+//
+hr {
+  border-bottom: $base-border;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin: $base-unit 0;
+}
+
+//
+img,
+picture {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+// Tables reboot from Bootstrap
+// Prevent double borders
+table {
+  border-collapse: collapse;
+}
+
+// caption {
+//   padding-top: $table-cell-padding;
+//   padding-bottom: $table-cell-padding;
+//   color: $table-caption-color;
+//   text-align: left;
+//   caption-side: bottom;
+// }
+
+// Matches default `<td>` alignment by inheriting from the `<body>`, or the
+// closest parent with a set `text-align`.
+th {
+  text-align: inherit;
+}
+
+//
+.text-smaller {
+  font-size: ms(-1);
+  line-height: ms-line-height(-2);
+
+  a {
+    line-height: ms-line-height(-2);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.text-light {
+  font-weight: 400;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

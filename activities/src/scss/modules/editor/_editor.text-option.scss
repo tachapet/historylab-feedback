@@ -1,0 +1,40 @@
+$text-option-color-default: #DFCECD;
+$text-option-color-selected: orange;
+
+.text-option {
+  display: inline-block;
+  position: relative;
+
+  cursor: pointer;
+  padding: 0 ($base-unit * 0.25);
+  border-radius: $base-border-radius + 1;
+
+  opacity: 1;
+  background-color: $text-option-color-default;
+
+  &:hover {
+    background: lighten($text-option-color-selected, 5);
+  }
+
+  &::before {
+    content: "";
+    pointer-events: none;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: 1px solid $bg-color;
+    border-radius: $base-border-radius + 1;
+  }
+
+  &.selected {
+    background: $text-option-color-selected;
+
+    &:hover {
+      background: darken($text-option-color-selected, 5);
+    }
+  }
+}

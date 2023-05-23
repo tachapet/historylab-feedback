@@ -1,0 +1,77 @@
+$menu-border-width: 4px;
+
+.contextual-menu-component {
+  z-index: 2;
+  position: absolute;
+  font-family: $base-font-family;
+  font-size: ms(-1);
+  line-height: ms-line-height(-1);
+  box-shadow: $button-shadow;
+  background: $bg-color-1;
+  border: $menu-border-width solid $bg-color;
+  border-radius: $base-border-radius;
+  animation: fadeIn .25s;
+
+  .previous-slide & {
+    display: none;
+  }
+
+  .menu {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .menu-item {
+    cursor: pointer;
+    display: block;
+    padding: ($base-unit * 0.22) ($base-unit * 0.5) ($base-unit * 0.25);
+    opacity: .8;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .close {
+    z-index: 3;
+    cursor: pointer;
+    position: absolute;
+    top: calc(#{$base-unit * -0.25} - #{$menu-border-width});
+    right: calc(#{$base-unit * -0.25} - #{$menu-border-width});
+    display: block;
+    width: $base-unit * 0.65;
+    height: $base-unit * 0.65;
+    line-height: $base-unit * 0.65;
+    font-size: ms(-1);
+    font-family: $ui-font-family;
+    background-color: $bg-color;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: $button-shadow;
+    text-align: center;
+    transition: none;
+
+    &:hover {
+      color: $bg-color;
+      background-color: $text-color;
+      border-bottom: 0;
+      text-decoration: none;
+      transform: scale(1.2);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:before {
+      content: "×";
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: .62;
+    }
+  }
+}

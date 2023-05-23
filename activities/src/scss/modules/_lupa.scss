@@ -1,0 +1,25 @@
+#lupa {
+  width: 1px;
+  height: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
+  z-index: $layer-magnifying-glass;
+  display: none;
+
+  @include min-screen($screen-l) {
+    display: block;
+  }
+}
+
+.lupa-canvas {
+  position: absolute;
+  left: -115px;
+  top: -250px;
+}
+
+[data-lupa-target] {
+  cursor: zoom-in;
+}

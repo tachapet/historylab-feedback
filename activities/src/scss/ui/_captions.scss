@@ -1,0 +1,36 @@
+.caption-on-hover {
+  // display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: $base-unit * .75 $base-unit * .5 $base-unit * .25;
+  background: linear-gradient(to top, rgba($text-color, .62) 10%, rgba($text-color, 0) 100%);
+  background-position: center right;
+  color: $bg-color-1;
+  font-family: $base-font-family;
+  font-size: ms(-2);
+  line-height: ms-line-height(-4);
+  text-shadow: 0 0 $base-unit * .125 $text-color;
+  overflow: visible;
+  text-align: left;
+  pointer-events: none;
+
+  opacity: 1;
+  will-change: opacity;
+  transition: opacity $base-duration $base-timing;
+
+  .gallery-item:hover &,
+  .media-item:hover &,
+  .sortable-item:hover &,
+  .half-slide-previous.previous-to-active-slide .sortable-item &,
+  .svgs__item:hover & {
+    // display: none;
+    opacity: 0;
+  }
+
+  .svgs__item & {
+    font-size: ms(-1);
+    line-height: ms-line-height(-3);
+  }
+}

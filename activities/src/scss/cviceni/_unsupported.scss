@@ -1,0 +1,29 @@
+#unsupported {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  text-align: center;
+  z-index: 9999998;
+
+  background-color: $text-color;
+  color: $bg-color;
+
+  svg {
+    width: $base-unit * 3;
+    height: $base-unit * 3;
+    fill: currentColor;
+  }
+
+  h1 {
+    font-size: ms(2);
+    line-height: ms-line-height(2);
+    margin-bottom: $base-unit * 2;
+    max-width: $base-unit * 45;
+  }
+}

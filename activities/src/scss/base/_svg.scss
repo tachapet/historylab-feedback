@@ -1,0 +1,25 @@
+#svg-icon-lib {
+  display: none;
+  pointer-events: none;
+}
+
+.icon-svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: $base-unit;
+  height: $base-unit;
+  pointer-events: none;
+  color: currentColor;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor
+  }
+}
+
+img,
+svg {
+  max-width: 100%;
+}

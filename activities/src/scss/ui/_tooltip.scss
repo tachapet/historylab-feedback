@@ -1,0 +1,24 @@
+[data-tooltip] {
+  &::before {
+    content: attr(data-tooltip);
+    display: none;
+    position: absolute;
+    background-color: rgba($text-color, 0.62);
+    border-radius: $base-border-radius;
+    color: $color-bg-0;
+    font-size: ms(-2);
+    letter-spacing: 0.05em;
+    line-height: ms-line-height(-3);
+    padding: ($base-unit * 0.1875) ($base-unit * 0.25) ($base-unit * 0.125);
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 ($base-unit * 0.5) $text-color;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    &::before {
+      display: block;
+    }
+  }
+}

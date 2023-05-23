@@ -1,0 +1,146 @@
+$btn-font-weight: 400;
+$btn-border-width: 1px;
+
+.button {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  padding: ($base-unit * 0.25) $base-unit;
+  margin-bottom: $base-unit;
+  font-size: ms(0);
+  line-height: ms-line-height(0);
+  border: $btn-border-width solid transparent;
+  border-radius: $base-unit;
+  box-shadow: 0 ($base-unit * 0.25) ($base-unit * 0.5) rgba($text-color, 0.5);
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+
+  & + & {
+    margin-left: $base-unit;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border-bottom-color: transparent;
+    box-shadow: 0 ($base-unit * 0.1875) ($base-unit * 0.375) rgba($text-color, 0.5625);
+  }
+
+  &:active {
+    box-shadow: 0 ($base-unit * 0.125) ($base-unit * 0.25) rgba($text-color, 0.625);
+  }
+
+  &.secondary {
+    background-color: $bg-color-1;
+    border-color: $bg-color-2;
+    color: currentColor;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($bg-color-2, 49);
+    }
+
+    &:active {
+      background-color: lighten($bg-color-2, 45);
+    }
+  }
+
+  &.tertiary {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid lighten($bg-color-2, 20);
+    box-shadow: none;
+    color: currentColor;
+    font-size: ms(-1);
+    line-height: ms-line-height(-1);
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      border-bottom-color: currentColor;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &.small {
+    font-size: ms(-1);
+    line-height: ms-line-height(-1);
+    padding: ($base-unit * 0.25) ($base-unit * 0.75);
+    box-shadow: 0 ($base-unit * 0.125) ($base-unit * 0.25) rgba($text-color, 0.25);
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 ($base-unit * 0.125 * 0.66) ($base-unit * 0.25 * 0.66) rgba($text-color, 0.125);
+    }
+
+    // TODO
+    &:active {
+      box-shadow: 0 ($base-unit * 0.125) ($base-unit * 0.25) rgba($text-color, 0.625);
+    }
+  }
+}
+
+.button-ok {
+  background-color: #00AA58;
+  color: $bg-color-1;
+  opacity: 1;
+  transition: opacity $base-duration $base-timing, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  will-change: opacity;
+
+  &.button-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: darken(#00AA58, 5);
+    color: white;
+  }
+
+  &.color-red {
+    background-color: red;
+
+    &:hover {
+      background-color: darken(red, 5);
+    }
+  }
+
+  &.color-orange {
+    background-color: orange;
+
+    &:hover {
+      background-color: darken(orange, 5);
+    }
+  }
+
+  &.color-green {
+    background-color: #00AA58;
+
+    &:hover {
+      background-color: darken(#00AA58, 5);
+    }
+  }
+
+  &.button-sent {
+    background-color: grey;
+    pointer-events: none;
+  }
+
+  .hide-on-previous-slide & {
+    .previous-slide & {
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}

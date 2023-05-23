@@ -1,0 +1,58 @@
+.comment {
+  border-radius: 15px;
+  min-height: 200px;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 250px;
+  position: absolute;
+  line-height: 1.1rem;
+  text-align: left;
+
+  .close {
+    color: #111;
+    margin-left: 15px;
+    margin-top: 2px;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 50%;
+
+    &:before {
+      content: "\2014";
+    }
+  }
+
+  button {
+    font-size: 1rem;
+  }
+
+  .comment-new-text {
+    padding: 5px;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    width: 90%;
+  }
+
+  .comments-container {
+    margin: 1em 0;
+    overflow: auto;
+    max-height: 400px;
+    padding: 0 15px;
+    font-size: 1rem;
+  }
+
+  .comment-item {
+    font-size: 1rem;
+    padding: 5px 0;
+    border-bottom: 1px solid white;
+    margin-bottom: 15px;
+  }
+
+}

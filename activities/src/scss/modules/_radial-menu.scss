@@ -1,0 +1,113 @@
+$radial-menu-size: 120px;
+
+/* Radiální menu */
+#radial-menu {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid $text-color;
+  background-color: rgba($text-color, .62);
+  color: $bg-color;
+  z-index: -2;
+
+  display: block;
+  opacity: 0;
+  transform: translate3d(0,0,0) scale(0.38);
+  backface-visibility: hidden;
+
+  transition: transform .1s ease-out, opacity .1s ease-out, z-index .1s ease-out;
+
+  &.is-active {
+    // display: block;
+    z-index: 201;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.radial-menu-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $radial-menu-size;
+  height: $radial-menu-size;
+  border-radius: 50%;
+  // background-color: rgba(0,0,0, .2);
+  // background: radial-gradient(ellipse at center, rgba($bg-color,0) 15%,rgba($bg-color,.62) 62%);
+  // border: 1px dotted black;
+  // number of 55 is radial size of radial wrapper
+  transform: translateX(-50%) translateY(-38%);
+}
+
+.radial-menu-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+
+  background-color: rgba($text-color, 0.62);
+  border-radius: $base-border-radius;
+  font-size: ms(-2);
+  letter-spacing: 0.05em;
+  line-height: ms-line-height(-3);
+  padding: ($base-unit * 0.1875) ($base-unit * 0.25) ($base-unit * 0.125);
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 ($base-unit * 0.5) $text-color;
+}
+
+.radial-menu-item {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: $bg-color;
+  border-radius: 50%;
+  border: 3px solid $text-color;
+  box-shadow: 0 0 $base-unit * .5 rgba($text-color, .38);
+  color: $text-color;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  user-select: none;
+
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+
+  &:hover {
+    background-color: $text-color;
+    color: $bg-color;
+  }
+
+  .icon-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 15px;
+    height: 15px;
+  }
+}
+
+#color-point-blue,
+#point-similarity {
+  background-color: blue;
+
+  &:hover {
+    border-color: blue;
+  }
+}
+
+#color-point-red,
+#point-difference {
+  background-color: red;
+
+  &:hover {
+    border-color: red;
+  }
+}

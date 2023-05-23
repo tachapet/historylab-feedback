@@ -1,0 +1,263 @@
+.sortable {
+  counter-reset: section;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-bottom: $base-unit;
+
+  &.is-dragged {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+
+  img {
+    user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.sortable-horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.sortable-vertical {
+  flex-direction: column;
+}
+
+.sortable-item {
+  flex: 1 0;
+  background: $bg-color-1;
+  box-shadow: $box-shadow;
+  border-radius: $base-border-radius;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  transform-origin: 38% 38%;
+  transition:
+    opacity $base-duration $timing-out,
+    transform $base-duration $timing-out;
+  will-change: opacity, transform;
+
+  &.is-dragged {
+    position: absolute;
+    z-index: 1;
+    cursor: -moz-grabbing !important;
+    cursor: -webkit-grabbing !important;
+    cursor: grabbing !important;
+  }
+
+  // state: universal
+  .sortable:hover & {
+    &:not(.sortable-placeholder) {
+      opacity: .62;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  // state: no dragging
+  .sortable:not(.is-dragged) & {
+    &:not(.sortable-placeholder) {
+      &:hover {
+        transform: scale3d(1.038,1.038,1);
+      }
+    }
+  }
+
+  // state: dragging
+  .is-dragged &,
+  .is-dragged:hover & { //.sortable
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+
+    &:not(.sortable-placeholder) {
+      opacity: 1;
+      transform: scale3d(0.9, 0.9, 1);
+    }
+
+    &.is-dragged { // .sortable-item
+      opacity: 1;
+      transform: scale3d(1.038, 1.038, 1) rotate3d(0,0,1, 5deg) translate3d(-2%, -2%, 0);
+    }
+  }
+
+  .sortable-horizontal & {
+    // TODO
+    margin: 1%;
+  }
+  .sortable-vertical & {
+    box-shadow: 0 0 $base-unit rgba($text-color, 0.8);
+    margin: $base-unit * 0.25 $base-unit * 0.5;
+  }
+
+  .row {
+    padding-bottom: 0;
+  }
+}
+
+.sortable-drag-item {
+  position: relative;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: grab;
+
+  * {
+    pointer-events: none;
+  }
+
+  &:not([data-sortable-drag="svg"]) textarea,
+  .media-player-button {
+    pointer-events: auto;
+  }
+}
+
+.sortable-drop-item {
+  &::before {
+    counter-increment: section;
+    content: counter(section) "";
+    position: absolute;
+    top: $base-unit * 0.5;
+    left: $base-unit * 0.5;
+    width: $base-unit * 0.75;
+    height: $base-unit * 0.75;
+    line-height: $base-unit * 0.75;
+    background-color: rgba($text-color, 0.62);
+    border-radius: 50%;
+    box-shadow: 0 0 $base-unit * 0.5 rgba($text-color, 0.62);
+    color: $bg-color;
+    font-family: $ui-font-family;
+    font-feature-settings: "lnum";
+    font-size: ms(-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.sortable-placeholder {
+  transform: scale(0.9);
+  padding: 0;
+  overflow: hidden;
+  border: 1px dashed darken(#f7f7f7, 15);
+  border-radius: $base-border-radius;
+  background-color: $text-color;
+  opacity: 0.38;
+  min-height: $base-unit * 2;
+}
+
+.sortable-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: $base-unit;
+
+  .sortable:not(.is-dragged) .sortable-item:hover &,
+  .sortable-item.is-dragged & {
+    background-color: $text-color;
+    color: $bg-color;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    opacity: .5;
+    width: $base-unit * .5;
+    max-height: 100%;
+    fill: currentColor;
+  }
+
+  .sortable-vertical & {
+    svg {
+      transform: translate(-50%, -50%) rotate(90deg);
+      width: $base-unit * .25;
+    }
+  }
+}
+
+.sortable-item-image {
+  + .sortable-handle {
+    color: $bg-color;
+    background-color: rgba($text-color, .62);
+
+    svg {
+      opacity: .62;
+    }
+  }
+}
+
+.sortable-item-audio {
+  // offset because of counter number
+  .media-player-audio-simple {
+    padding-top: $base-unit * 1.5;
+  }
+
+  + .sortable-handle {
+    color: $bg-color;
+
+    .sortable-item:hover &,
+    .sortable-item.is-dragged & {
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.sortable-item-text {
+  width: 100%;
+  height: 100%;
+  min-height: $base-unit * 2;
+  border-radius: $base-border-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $base-unit * 0.25 $base-unit $base-unit * 0.25 $base-unit * 1.5;
+
+  .sortable-vertical & {
+    padding-right: $base-unit * 1.25;
+  }
+}
+
+.sortable-item-user-text {
+  background: $bg-color-1;
+
+  .sortable-vertical & {
+    padding-right: $base-unit;
+  }
+
+  .user-texts,
+  .user-texts-container {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .user-text {
+    line-height: 0;
+  }
+}
+
+.sortable-item-svg {
+  width: 100%;
+
+  + .sortable-handle {
+    background-color: rgba($text-color, .62);
+    color: $bg-color;
+
+    svg {
+      opacity: .62;
+    }
+  }
+}

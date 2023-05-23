@@ -1,0 +1,67 @@
+@import "../../scss/variables/variables";
+
+#header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: $base-unit * 2;
+  line-height: $base-unit * 2;
+  background-color: $bg-color-1;
+  padding: 0 $base-unit;
+  // border-bottom: 1px solid rgba(lightgray,.2);
+  // text-transform: uppercase;
+  // font-size: ms(-1);
+  color: $bg-color-2;
+
+  display: flex;
+
+  will-change: transform;
+  transition: transform .3s $base-timing;
+  transform: translate3d(0, 0, 0);
+
+  &.is-hidden {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  .icon-svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.header-left {
+  flex: 0 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+  padding-left: $base-unit * 1.75;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .icon-svg {
+    margin-top: -2px;
+    left: $base-unit * .75;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.header-center {
+  flex: 1 auto;
+  position: relative;
+
+}
+
+.header-right {
+  margin-left: auto;
+  justify-content: center;
+  display: flex;
+}
+
+.activity-version-select{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}

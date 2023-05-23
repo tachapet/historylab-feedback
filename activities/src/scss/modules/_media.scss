@@ -1,0 +1,220 @@
+.media-players {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.media-container {
+  flex: 1;
+  line-height: ms-line-height(-1);
+
+  .gallery-container + & {
+  // .media-mix > & {
+    padding: 0 $base-unit * .5;
+    // text-align: left;
+
+    @include min-screen($screen-l + 1) {
+      flex: 0 1 $editor-width;
+      // max-width: $base-unit * 30;
+      padding: 0;
+    }
+  }
+
+  &.layout-horizontal {
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 0 $base-unit * 2;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $base-unit;
+
+  @include min-screen($screen-l + 1) {
+    margin: 0 0 $base-unit;
+  }
+}
+
+.media-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .layout-vertical & {
+    border-top: 2px solid $color-bg--4;
+
+    &:first-of-type {
+      border-top: 0;
+    }
+  }
+
+  &.media-image {
+    flex: 1;
+    border-radius: $base-border-radius;
+    box-shadow: $box-shadow;
+    margin: 0 1%;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      height: 100%;
+      max-height: 90vh;
+    }
+  }
+}
+
+.media-player {
+  background-color: $text-color;
+  box-shadow: $box-shadow;
+  color: $bg-color-1;
+  overflow: hidden;
+  position: relative;
+
+  .gallery-item & {
+    box-shadow: none;
+  }
+
+  .layout-horizontal & {
+    border-radius: $base-border-radius;
+  }
+
+  .layout-vertical .media-item:first-of-type & {
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+  }
+
+  .layout-vertical .media-item:last-of-type & {
+    border-bottom-left-radius: $base-border-radius;
+    border-bottom-right-radius: $base-border-radius;
+  }
+}
+
+.media-player-wrapper {
+  position: relative;
+
+  :fullscreen & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+// about
+.media-player-meta {
+  position: relative;
+  text-align: left;
+}
+.media-player-label {
+  display: inline-block;
+  background-color: rgba($bg-color-2, .2);
+  border-radius: $base-unit;
+  color: $bg-color-2;
+  font-size: ms(-3);
+  line-height: 0;
+  letter-spacing: .05em;
+  margin-left: $base-unit * -.05;
+  margin-bottom: $base-unit * .25;
+  padding: $base-unit * .375 $base-unit * .375 $base-unit * .325;
+  position: relative;
+  text-transform: uppercase;
+  top: $base-unit * -.25;
+  white-space: nowrap;
+}
+.media-player-title {
+  font-family: $editor-font-family;
+  font-size: ms(1);
+  line-height: ms-line-height(-1);
+  margin-bottom: $base-unit * .25;
+}
+.media-player-description {
+  color: $bg-color;
+  font-size: ms(-2);
+  line-height: ms-line-height(-3);
+  letter-spacing: 0.03em;
+}
+
+// info
+.media-player-time {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $base-unit * 0.25;
+  font-size: ms(-2);
+}
+.media-time-current {
+  color: $bg-color-1;
+}
+.media-time-duration {
+  color: $bg-color-2;
+}
+
+// controls
+.media-player-button {
+  border: 0;
+  cursor: pointer;
+  color: $text-color;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  border: 1px solid $bg-color;
+
+  // .media-audio & {
+    width: 4vw;
+    height: 4vw;
+    min-width: $base-unit * 1.5;
+    min-height: $base-unit * 1.5;
+    max-width: $base-unit * 3;
+    max-height: $base-unit * 3;
+  // }
+
+  svg {
+    fill: currentColor;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    background-color: $text-color;
+    border-color: $text-color;
+    color: $bg-color;
+  }
+}
+
+// switch the icon
+// TODO: use aria-label instead
+// TODO: use it for wrapper to know the state
+[data-player-control='playing'] {
+  .media-player-button-play {
+    display: none;
+  }
+  .media-player-button-pause {
+    display: block;
+  }
+}
+[data-player-control='paused'] {
+  .media-player-button-play {
+    display: block;
+  }
+  .media-player-button-pause {
+    display: none;
+  }
+}
+
+.media-audio + .media-video,
+.media-video + .media-audio {
+  // margin-top: $base-unit * 2;
+
+  // .layout-vertical & {
+  //   border-top: 0;
+  // }
+
+  &.gallery-item {
+    border-color: $bg-color-2;
+  }
+
+  // > .media-player {
+  //   border-radius: $base-border-radius;
+  // }
+}

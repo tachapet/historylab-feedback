@@ -1,0 +1,416 @@
+@use "sass:math";
+
+$draggable--max-width: $screen-xl;
+$draggable__item--max-size: $base-unit * 9;
+
+.draggable {
+  background: radial-gradient(farthest-corner, rgba($text-color, .6) 0%, rgba($text-color, .7) 100%);
+  border-radius: $base-unit * 2;
+  border: 3px dashed $text-color;
+  box-shadow: $box-shadow;
+  color: $bg-color;
+  max-width: $draggable--max-width;
+  padding: $base-unit $base-unit $base-unit * .5;
+  position: relative;
+  text-align: center;
+
+  // Does not work in Firefox
+  // max-height: 30vh;
+  // overflow: auto;
+  // -webkit-overflow-scrolling: touch;
+
+  // do not make it sticky when it is done to have clear view of SVG
+  :root:not(.is-done) & {
+    @include min-screen($screen-l) {
+      position: sticky;
+      top: $base-unit;
+
+      // because of sticky right side (any single purpose module) when horizontal layout
+      // Solution for dragged item which is below the right side
+      z-index: 2;
+    }
+  }
+
+  .layout-vertical &,
+  .table-new__wrapper & {
+    margin: 0 auto $base-unit;
+    width: 100%;
+  }
+
+  .svgs:not(.layout-vertical) & {
+    margin-bottom: $base-unit;
+
+    // @include max-screen($screen-l) {
+      //   max-height: 30vh;
+      //   overflow: auto;
+      //   -webkit-overflow-scrolling: touch;
+      // }
+
+    @include min-screen($screen-l) {
+      // have it sticky in horizontal layout
+      position: sticky;
+      top: $base-unit;
+      // because of sticky right side (any single purpose module) when horizontal layout
+      // Solution for dragged item which is below the right side
+      z-index: 2;
+
+      flex: 2;
+      align-self: flex-start;
+      margin-right: $base-unit * 2;
+      max-width: math.div($draggable--max-width, 3);
+      padding: $base-unit $base-unit $base-unit * .5;
+
+      // .half-slide-previous.previous-to-active-slide &,
+      // .half-slide-previous.previous-slide & {
+      //   display: none;
+      // }
+    }
+  }
+
+  .half-slide-previous.previous-to-active-slide &,
+  .half-slide-previous.previous-slide & {
+    @include min-screen($screen-l) {
+      display: none;
+    }
+  }
+}
+
+.slide.is-dragging {
+  cursor: grabbing;
+}
+
+.draggable__title {
+  border-bottom: 1px solid rgba($bg-color, .1);
+  margin-top: $base-unit * -.5;
+  margin-bottom: $base-unit;
+  padding-bottom: $base-unit * .25;
+}
+
+.draggable__items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  // .svgs.module-with-draggable:not(.layout-vertical) & {
+  //   flex-direction: column;
+  // }
+}
+
+.is-dragged {
+  .node-close {
+    display: none;
+  }
+}
+
+.draggable__item {
+  // color: $text-color;
+  cursor: grab;
+  opacity: 1;
+  padding: 0 $base-unit * 0.25 $base-unit * 0.5;
+  position: relative;
+  transform: scale3d(1, 1, 1);
+  transition:
+    opacity $base-duration $timing-out,
+    transform $base-duration $timing-out;
+  will-change: opacity, transform;
+  width: auto;
+
+  &.is-dragged {
+    opacity: .62;
+    outline: 0;
+    position: absolute;
+    transform: scale3d(1.2, 1.2, 1);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .has-was-dropped &.was-dropped {
+    // same as .keywords-item.disabled
+    opacity: 0.38;
+
+    .draggable__item__inner {
+      box-shadow: none;
+    }
+
+    &:hover {
+      opacity: 0.62;
+
+      .draggable__item__inner {
+        box-shadow: 0 0 ($base-unit * 0.25) rgba($text-color, 0.38);
+      }
+    }
+
+
+    &:hover {
+      &::before {
+        bottom: calc(100% + #{$base-unit * .25});
+        left: 50%;
+        transform: translateX(-50%);
+
+        // background-color: $color-green;
+        border-radius: $base-unit * 0.1875 + $base-unit * 0.125 + ms-line-height(-3);
+      }
+    }
+  }
+
+  // state: universal
+  .draggable__items:hover & {
+    &:not(.draggable-placeholder) {
+      opacity: .62;
+
+      &.was-dropped {
+        opacity: .24;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  // state: no dragging
+  .slide:not(.is-dragging) & {
+    &:not(.draggable-placeholder) {
+      &:hover {
+        transform: scale3d(1.038,1.038,1);
+      }
+    }
+  }
+
+  .is-dragging &:not(.is-dragged) {
+    opacity: .62;
+
+    &.was-dropped {
+      opacity: .24;
+    }
+  }
+
+  *,
+  .slide.is-dragging & {
+    pointer-events: none;
+  }
+}
+
+.draggable__item__inner {
+  position: relative;
+  background-color: $color-bg-1;
+  border-radius: $base-border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  > * {
+    max-height: $draggable__item--max-size;
+    max-width: $draggable__item--max-size;
+    width: 100%;
+    height: 100%;
+  }
+
+  .draggable .draggable__item--tag & {
+    padding-right: $base-unit * .5;
+  }
+}
+
+.draggable__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: $base-unit;
+
+  .draggable__item:hover &,
+  .draggable__item.is-dragged & {
+    background-color: $text-color;
+    color: $bg-color;
+  }
+
+  .draggable__item--placeholder & {
+    display: none;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    opacity: .5;
+    width: $base-unit * .5;
+    max-height: 100%;
+    fill: currentColor;
+  }
+
+  .draggable--vertical & {
+    svg {
+      transform: translate(-50%, -50%) rotate(90deg);
+      width: $base-unit * .25;
+    }
+  }
+
+  .draggable__item--audio &,
+  .draggable__item--image &,
+  .draggable__item--svg &,
+  .draggable__item--video & {
+    color: $bg-color;
+    background-color: rgba($text-color, .62);
+
+    svg {
+      opacity: .62;
+    }
+  }
+
+  .draggable__item--tag & {
+    color: rgba($text-color, .62);
+  }
+
+  .draggable__item--tag:hover &,
+  .draggable__item--tag.is-dragged & {
+    background-color: transparent;
+    color: $text-color;
+  }
+
+
+  .draggable__item--audio:hover &,
+  .draggable__item--audio.is-dragged & {
+    svg {
+      opacity: .8;
+    }
+  }
+}
+
+.draggable__item--placeholder {
+  opacity: 0.38;
+}
+
+// TODO: text component in general
+// .draggable__item--text {
+//   // width: 100%;
+//   // height: 100%;
+//   // min-height: $base-unit * 2;
+//   border-radius: $base-border-radius;
+//   // display: inline-flex;
+//   // justify-content: center;
+//   // align-items: center;
+//   // padding: $base-unit * 0.25 $base-unit $base-unit * 0.25 $base-unit * 1.5;
+
+//   .draggable-vertical & {
+//     padding-right: $base-unit * 1.25;
+//   }
+
+//   .draggable__item__inner {
+//     background: $color-bg-1;
+//     padding: calc(#{($base-unit * 0.125)} - 1px) $base-unit * 1.25 0 ($base-unit * 0.25);
+//   }
+// }
+
+// TODO: stop using textarea. Import user text to the new text component
+// .draggable__item--user-text {
+//   // background: $bg-color-1;
+
+//   .draggable-vertical & {
+//     padding-right: $base-unit;
+//   }
+
+//   .user-texts,
+//   .user-texts-container {
+//     padding-bottom: 0;
+//     margin-bottom: 0;
+//     width: 100%;
+//   }
+//   .user-text {
+//     line-height: 0;
+//   }
+// }
+
+.keywords-item {
+
+  .draggable__item &,
+  .dropped__item & {
+    padding-left: $base-unit * 1.125;
+
+    .keywords-item-icon {
+      position: absolute;
+      top: 50%;
+      left: $base-unit * .5;
+      transform: translateY(-50%);
+      width: $base-unit * .25;
+      height: $base-unit * .25;
+      border: 1px solid $bg-color-2;
+      border-radius: 50%;
+    }
+  }
+
+  .was-dropped &,
+  .dropped__item & {
+    .keywords-item-icon {
+      background-color: $bg-color-2;
+    }
+  }
+
+  .dropped__item & {
+    .keywords-item-icon {
+      /* foreign object doesnt like position absolute on iOS */
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset !important;
+    }
+  }
+}
+
+
+
+[data-drop-place] {
+  position: relative;
+  height: $base-unit * 4;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: $base-unit * .25;
+    left: $base-unit * .25;
+    right: $base-unit * .25;
+    bottom: $base-unit * .25;
+    border-radius: $base-border-radius;
+    border: 1px dashed $color-bg--2;
+    background-color: $color-bg-0;
+    text-align: center;
+    line-height: $base-unit * 4;
+    pointer-events: none;
+  }
+}
+
+.svg {
+  .dropped__item {
+    // background-color: $color-bg-1;
+    width: 100%;
+    height: 100%;
+    // border-radius: $base-border-radius;
+    // overflow: hidden;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+
+    .keywords-item {
+      font-size: ms(1);
+      line-height: ms-line-height(0);
+      pointer-events: none;
+      /* FO doesnt like position relativ on iOS */
+      position: unset;
+      padding: 0;
+    }
+
+  &:not(.dropped__item--svg):not(.dropped__item--image)  > * {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+}
+
+.dropped__item--svg {
+  line-height: 0;
+}

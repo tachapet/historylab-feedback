@@ -1,0 +1,205 @@
+$selectable-icon-background: $color-bg--4;
+$selectable-toggle-size: $fullscreen-toggle-size;
+
+.selectable {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-bottom: $base-unit;
+
+  // media-text
+  .media-text {
+    line-height: ms(1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    label {
+      display: block;
+      padding: $base-unit * 0.75 $base-unit;
+      padding-right: $base-unit * 2.25;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  // media-uzivatelsky-text
+  .user-texts {
+    margin-bottom: 0;
+  }
+
+  .user-texts-container {
+    width: 100%;
+  }
+
+  .user-text {
+    line-height: 0;
+  }
+
+  textarea {
+    padding: $base-unit * 0.75;
+    padding-right: $base-unit * 1.5;
+    // pointer-events: none;
+  }
+}
+
+.selectable-horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.selectable-vertical {
+  flex-direction: column;
+}
+
+.selectable-item {
+  position: relative;
+  flex: 1 0;
+  max-width: 25vw;
+  background: $bg-color-1;
+  box-shadow: $box-shadow;
+  border-radius: $base-border-radius;
+  overflow: hidden;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: opacity $base-duration $timing-out,
+    transform $base-duration $timing-out;
+
+  &:hover {
+    svg {
+      display: block;
+    }
+  }
+
+  .gallery-item & {
+    max-width: none;
+  }
+
+  .selectable:hover &,
+  .selectable.has-checked &:not(.is-checked),
+  .is-done &:not(.is-checked) {
+    opacity: 0.62;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .selectable-horizontal & {
+    margin: $base-unit * 0.5;
+  }
+  .selectable-vertical & {
+    box-shadow: 0 0 $base-unit rgba($text-color, 0.8);
+    flex: 1 auto;
+    margin: $base-unit * 0.25 $base-unit * 0.5;
+  }
+
+  &.media-image {
+    flex: 1 auto;
+    // background-color: $text-color;
+
+    img {
+      // object-fit: contain;
+      // object-position: top;
+      // width: 100%;
+      // height: 100%;
+      max-height: 38vh;
+    }
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.selectable-toggle {
+  position: absolute;
+  top: $base-unit * 0.5;
+  right: $base-unit * 0.5;
+  width: $selectable-toggle-size;
+  height: $selectable-toggle-size;
+  background-color: $selectable-icon-background;
+  box-shadow: 0 0 ($base-unit * 0.2) rgba($text-color, 0.38);
+  color: $text-color;
+  cursor: pointer;
+  border: 1px solid $color-text;
+
+  // same styling as fullscreen tooltip
+  &::after {
+    display: none;
+    // TODO: attr
+    // kviz, selekce
+    content: attr(data-text-select);
+    font-size: ms(-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    right: calc(100% + #{$base-unit * 0.25});
+    transform: translateY(-50%);
+    text-shadow: 0 0 ($base-unit * 0.5) $text-color;
+    line-height: ms-line-height(-3);
+    padding: ($base-unit * 0.1875) ($base-unit * 0.25) ($base-unit * 0.125);
+    border-radius: $base-border-radius;
+    background-color: rgba($text-color, 0.62);
+    color: $bg-color;
+  }
+
+  &:hover {
+    &::after {
+      display: block;
+    }
+  }
+
+  .selectable-item.is-checked & {
+    background-color: $base-color;
+    box-shadow: 0 0 ($base-unit * 0.2) rgba($text-color, 0.62);
+
+    &:hover {
+      &::after {
+        content: attr(data-text-deselect);
+      }
+    }
+  }
+
+  .selectable-item:hover & {
+    color: $bg-color-2;
+  }
+
+  svg {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $base-unit * 0.75;
+    height: $base-unit * 0.75;
+    fill: currentColor;
+
+    .selectable-item.is-checked & {
+      display: block;
+    }
+  }
+}
+
+.selectable-toggle--checkbox {
+  border-radius: $base-unit * 0.25;
+}
+
+.selectable-toggle--radio {
+  border-radius: $selectable-toggle-size;
+
+  .selectable-item.is-checked & {
+    pointer-events: none;
+  }
+
+  .selectable-item.is-checked:hover & {
+    color: $text-color;
+  }
+}

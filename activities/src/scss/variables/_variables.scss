@@ -1,0 +1,169 @@
+@import "colors";
+@import "../tools/vendor/modular-scale/_ratios.scss";
+
+// ==================================================
+// Settings
+// ==================================================
+
+$theme: dark;
+
+
+// Modular scale
+// scale 1.25
+// 2.441rem
+// 1.953rem
+// 1.563rem
+// 1.25rem
+// 1rem
+// 0.8rem
+$ms-ratio: $major-third;
+$ms-base: 1rem;
+
+
+
+// ==================================================
+// Breakpoints
+// ==================================================
+
+// Extra small devices (portrait phones, less than 576px)
+$screen-xs: 320px;
+// Small devices (landscape phones, 576px and up)
+$screen-s: 576px;
+// Medium devices (tablets, 768px and up)
+$screen-m: 768px;
+// Large devices (desktops, 1024px and up)
+$screen-l: 1024px;
+// Extra large devices (large desktops, 1200px and up)
+$screen-xl: 1200px;
+$screen-xxl: 1600px;
+
+$breakpoints: (
+   xs: $screen-xs,
+    s: $screen-s,
+    m: $screen-m,
+    l: $screen-l,
+   xl: $screen-xl,
+  xxl: $screen-xxl
+) !default;
+
+
+
+// ==================================================
+// Typography
+// ==================================================
+
+// Fonts
+$base-font-family: "Lato", Helvetica, Arial, sans-serif;
+$heading-font-family: "Lato", Helvetica, Arial, sans-serif;
+$ui-font-family: "Lato", Helvetica, Arial, sans-serif;
+$serif-font-family: "Vesper", "Times New Roman", serif;
+// $line-height: 1.6rem;
+
+// Font Sizes
+$base-font-size: 100%;
+// Font Sizes for different media queries
+$font-sizes: (
+  null: 87.5%,
+  xs:   93.75%,
+  s:   106.25%,
+  m:   93.75%,
+  l:   100%,
+  xl:   106.25%,
+  xxl:   112.5%
+  ) !default;
+
+// Line height
+$base-line-height: 1.6rem;
+$heading-line-height: 1.2;
+$ms-line-heights: (
+  -4: $base-line-height * 0.55,
+  -3: $base-line-height * 0.625,
+  -2: $base-line-height * 0.75,
+  -1: $base-line-height * 0.875,
+  0: $base-line-height,
+  1: $base-line-height * 1.125,
+  2: $base-line-height * 1.5,
+  3: $base-line-height * 1.875,
+  4: $base-line-height * 2,
+  5: $base-line-height * 2.5,
+  6: $base-line-height * 3,
+  7: $base-line-height * 3,
+  8: $base-line-height * 4,
+  );
+
+// Vertical rhytm units
+$base-unit: $base-line-height;
+
+//
+// Headings Options
+// - size (rem),
+// - line height (rem),
+// - margin top (rem),
+// - margin bottom (rem)
+$headings: (
+  h1: (ms(4), ms-line-height(3), 0, $base-unit),
+  h2: (ms(2), ms-line-height(1), 0, $base-unit * 0.5),
+  h3: (ms(1), ms-line-height(1), 0, $base-unit * 0.5),
+  h4: (ms(0), ms-line-height(0), 0, 0),
+  h5: (ms(-1), ms-line-height(-1), 0, 0),
+  h6: (ms(-1), ms-line-height(-1), 0, 0)
+  ) !default;
+
+
+
+// ==================================================
+// Variables
+// ==================================================
+
+// Colors
+$base-color: hsl(2, 81%, 94%);
+$bg-color: $base-color;
+$bg-color-1: lighten(desaturate($bg-color, 5), 3);
+$bg-color-2: darken(desaturate($bg-color, 62), 38);
+
+@if $theme == light {
+  $bg-color-2: $bg-color;
+}
+
+$text-color: desaturate(darken($base-color, 85), 62);
+$action-color: hsl(1, 63%, 52%);
+$button-color: $action-color;
+$beauty-bush: #EEC5C3;
+$beauty-bush-gradient: desaturate(darken($beauty-bush, 2), 4), desaturate(darken($beauty-bush, 4), 8), desaturate(darken($beauty-bush, 6), 12), desaturate(darken($beauty-bush, 8), 16), desaturate(darken($beauty-bush, 10), 20), desaturate(darken($beauty-bush, 12), 24);
+
+// Border
+$base-border-color: transparent;
+$base-border: 1px solid $base-border-color;
+$base-border-radius: 3px;
+$box-shadow: 0 0 $base-unit * 2 rgba($text-color, .8);
+$box-shadow-small: 0 0 $base-unit rgba($text-color, .8);
+
+// Buttons
+$button-shadow: 0 0 $base-unit * 0.5 rgba(0, 0, 0, .2);
+
+// Animations
+$base-duration: .1s;
+$base-timing: ease-in-out;
+$transition-all: all $base-duration $base-timing;
+$timing-in: cubic-bezier(.62, 0, .8, .38);
+$timing-out: cubic-bezier(.2, .62, .38, 1);
+
+// SVG
+$svg-circle-size: $base-unit * 1.2;
+
+// Navigation
+$navigation-height: $base-unit * 1.875;
+$comment-width: $base-unit * 9.5;
+
+// Text module - editor
+$editor-font-family: $serif-font-family;
+$editor-width: $base-unit * 27;
+
+$gallery-width: $base-unit * 12;
+$gallery-width-big: $base-unit * 20;
+
+$usertext-width: $base-unit * 20;
+
+// Layers
+$layer-fullscreen: 999999;
+$layer-magnifying-glass: $layer-fullscreen + 1;
