@@ -9,7 +9,6 @@ const app = express()
 const port = 8888;
 const cors = require("cors");
 const store = require("store");
-const path = require("path");
 const serverState = "production";
 const production = require("./server.production");
 
@@ -32,7 +31,6 @@ store.set('entryIds', []);
 
 
 if (serverState === "production") {
-  console.log("=>(index.js:36) AAA");
   production(app);
 }
 

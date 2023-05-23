@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = (app) => {
 
-  const pathToClient = path.join(__dirname, "client");
+  const pathToClient = path.join(__dirname, "activity/dist");
 
   app.use(
     "/static",

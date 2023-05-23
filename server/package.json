@@ -4,6 +4,9 @@
   "description": "Diploma thesis - Petr Tácha",
   "main": "index.js",
   "scripts": {
+    "install-dep": "npm i && cd activity && npm i",
+    "build-app": "cd activity && npm run build",
+    "server": "node index.js ",
     "server-dev": "nodemon index.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
