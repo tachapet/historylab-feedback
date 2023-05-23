@@ -4,6 +4,7 @@
   "description": "Diploma thesis - Petr Tácha",
   "main": "index.js",
   "scripts": {
+    "install-and-build-app": "npm i && cd activity && npm i && npm run build",
     "install-dep": "npm i && cd activity && npm i",
     "build-app": "cd activity && npm run build",
     "server": "node index.js ",
