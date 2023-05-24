@@ -88,7 +88,7 @@ export const SaveDataProvider = ({ children }) => {
   useEffect(() => {
     if (!stateOfActivity.formik) return;
     stateOfActivity.formik.setValues(feedbackData[`submission${ stateOfActivity.submissionView }`] || {})
-  }, [feedbackData]);
+  }, [feedbackData, stateOfActivity.formik]);
 
   /**
    * Used when teacher is changing version of activity. Loading feedbackData and render data from student.

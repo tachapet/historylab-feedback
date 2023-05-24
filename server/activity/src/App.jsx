@@ -50,7 +50,7 @@ function App() {
   // When load, fetch state and other data from server.
   useEffect(() => {
     const fetchData = async () => {
-      const response = await DataService.fetchStateOfActivityMetadata(slug, modeOfActivity, entryId)
+      const response = await DataService.fetchStateOfActivityMetadata(slug, modeOfActivity, entryId);
       updateStateOfActivity(response.stateOfActivity);
       updateFeedbackData(response.feedbackData);
       updateModulesData(response.modulesData);

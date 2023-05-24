@@ -42,11 +42,14 @@ export default function StudentPage() {
             const typeOfButton = link.type ? "secondary" : "primary";
             return <Col>
               <Button
+                className={`p-3`}
                 color={ typeOfButton }
                 style={ {
                   fontSize: "1.5rem",
                   height: "100%",
-                  maxWidth: "15rem"
+                  maxWidth: "15rem",
+                  display: "flex",
+                  alignItems: "center"
                 } }
                 href={ link.url }
                 target={ newTab }
